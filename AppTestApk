@@ -1,0 +1,21 @@
+from kivy.app import App
+from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.label import Label
+from kivy.graphics import Color, Rectangle
+
+
+class FirstKivy(App):
+    def build(self):
+        label = Label(
+            text='распорядок дня',
+            pos=(0, 555),
+            size=(800, 50),
+            size_hint=(None, None))
+        with label.canvas:
+            Color(0, 1, 0, .25)
+            Rectangle(pos=label.pos, size=label.size)
+
+        return label
+
+if __name__ == "__main__":
+    FirstKivy().run()
