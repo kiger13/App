@@ -2,20 +2,33 @@ from kivy.app import App
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
 from kivy.graphics import Color, Rectangle
+from kivy.core.window import Window
+from kivy.uix.button import Button
+from kivy.uix.floatlayout import FloatLayout
 
 
-class FirstKivy(App):
+Window.clearcolor = (1, 1, 1, 1)
+
+
+class scheduleday(App):
     def build(self):
-        label = Label(
-            text='распорядок дня',
-            pos=(0, 555),
-            size=(800, 50),
-            size_hint=(None, None))
-        with label.canvas:
-            Color(0, 1, 0, .25)
-            Rectangle(pos=label.pos, size=label.size)
+        fl = FloatLayout()
 
-        return label
+        AddTaskButton = Button(text='+',size=(300, 300), size_hint=(.1, .1))
+        title = Label(
+            text='расписание дня',
+            color = (0, 0, 0, 1),
+            pos = (0, 555),
+            size = (800, 50),
+            size_hint = (None, None))
+        with title.canvas:
+            Color(0, 1, 0, .5)
+            Rectangle(pos = title.pos, size = title.size)
+
+        fl.add_widget(AddTaskButton)
+        fl.add_widget(title)
+        return fl
+
 
 if __name__ == "__main__":
-    FirstKivy().run()
+    scheduleday().run()
